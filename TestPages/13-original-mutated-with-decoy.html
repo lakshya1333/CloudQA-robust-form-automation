@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Real page, attributes stripped</title>
+<style>
+  body { font-family: Arial, sans-serif; margin: 24px; }
+  .well { border: 1px solid #ccc; padding: 16px; margin-bottom: 24px; background: #f7f7f7; }
+  .form-group { margin-bottom: 12px; }
+  .col-xs-6 { width: 48%; display: inline-block; vertical-align: top; }
+  .col-xs-12 { width: 100%; }
+  label.control-label { display: block; font-weight: bold; }
+  .note { color: #555; font-size: 13px; }
+</style>
+</head>
+<body>
+<p class="note">Variant: Real page, attributes stripped &mdash; the original form with every id/for/name/class/placeholder removed and State/First Name moved, while the Shadow DOM duplicate form (with its original ids) stays on the page</p>
+
+<div class="container">
+<form method="post" action="#">
+  <div>
+    <div><h2>Form</h2></div>
+    <div>
+      <label> State </label>
+      <select data-expect="state">
+            <option>-- Select Country --</option>
+            <option value="Afganistan">Afganistan</option>
+            <option value="Argentina">Argentina</option>
+            <option value="Australia">Australia</option>
+            <option value="Bangladesh">Bangladesh</option>
+            <option value="Belgium">Belgium</option>
+            <option value="Canada">Canada</option>
+            <option value="Cuba">Cuba</option>
+            <option value="Denmark">Denmark</option>
+            <option value="Egypt">Egypt</option>
+            <option value="Finland">Finland</option>
+            <option value="France">France</option>
+            <option value="Germany">Germany</option>
+            <option value="Greece">Greece</option>
+            <option value="Greenland">Greenland</option>
+            <option value="Hong Kong">Hong Kong</option>
+            <option value="India">India</option>
+            <option value="Indonesia">Indonesia</option>
+            <option value="Italy">Italy</option>
+            <option value="Japan">Japan</option>
+            <option value="Kenya">Kenya</option>
+            <option value="Malaysia">Malaysia</option>
+            <option value="Mexico">Mexico</option>
+            <option value="Nepal">Nepal</option>
+            <option value="Netherlands">Netherlands</option>
+            <option value="Philippines">Philippines</option>
+            <option value="Russia">Russia</option>
+            <option value="Saudi Arabia">Saudi Arabia</option>
+            <option value="Singapore">Singapore</option>
+            <option value="Turkey">Turkey</option>
+            <option value="United Arab Emirates">United Arab Emirates</option>
+            <option value="United Kingdom">United Kingdom</option>
+            <option value="United States">United States</option>
+            <option value="Zimbabwe">Zimbabwe</option>
+      </select>
+    </div>
+    <div>
+      <label>Last Name</label>
+      <input type="text" />
+    </div>
+    <div>
+      <label>Gender</label>
+      <div>
+        <input type="radio" value="Male" />
+        <span>Male</span>
+        <input type="radio" value="Female" data-expect="gender" />
+        <span>Female</span>
+        <input type="radio" value="Transgender" />
+        <span>Transgender</span>
+      </div>
+    </div>
+    <div>
+      <label>Date of Birth</label>
+      <input type="text" />
+    </div>
+    <div>
+      <label>Mobile #</label>
+      <input type="number" />
+    </div>
+    <div>
+      <label>Email</label>
+      <input type="text" />
+    </div>
+    <div>
+      <label> Country </label>
+      <input type="text" />
+    </div>
+    <div>
+      <label>Hobbies</label>
+      <input type="checkbox" value="Dance" /><span>Dance</span>
+      <input type="checkbox" value="Reading" /><span>Reading</span>
+      <input type="checkbox" value="Cricket" /><span>Cricket</span>
+    </div>
+    <div>
+      <label>About Yourself</label>
+      <textarea rows="3"></textarea>
+    </div>
+    <div>
+      <label>First Name</label>
+      <input type="text" data-expect="firstName" />
+    </div>
+  </div>
+  <div>
+    <input type="text" />
+    <input type="password" />
+    <input type="checkbox" value="Agree" /> I agree to <a href="#">terms</a>
+  </div>
+  <button type="submit">Submit</button>
+  <button type="reset">Reset</button>
+</form>
+
+<form method="post" class="well" id="shadowdomautomationtestform" action="#">
+  <h1>Shadow DOM</h1>
+  <shadow-form></shadow-form>
+</form>
+</div>
+
+<div class="modal fade" id="exampleModal" style="display:none">
+  <form>
+    <label for="recipient-name" class="control-label">Recipient:</label>
+    <input type="text" class="form-control" id="recipient-name">
+  </form>
+</div>
+
+<script>
+customElements.define('shadow-form', class extends HTMLElement {
+  constructor() {
+    super();
+    this.attachShadow({ mode: 'open' }).innerHTML = `
+      <div class="form-group"><label for="fname">First Name</label><slot name="fname"></slot></div>
+      <div class="form-group"><label for="lname">Last Name</label><slot name="lname"></slot></div>
+      <div class="form-group"><label>Gender</label><div><slot name="gender"></slot></div></div>
+      <div class="form-group"><label for="state"> State </label><slot name="statedropdown"></slot></div>`;
+  }
+  connectedCallback() {
+    this.innerHTML = `
+      <section slot="statedropdown"><select id="state" name="State">            <option>-- Select Country --</option>             <option value="Afganistan">Afganistan</option>             <option value="Argentina">Argentina</option>             <option value="Australia">Australia</option>             <option value="Bangladesh">Bangladesh</option>             <option value="Belgium">Belgium</option>             <option value="Canada">Canada</option>             <option value="Cuba">Cuba</option>             <option value="Denmark">Denmark</option>             <option value="Egypt">Egypt</option>             <option value="Finland">Finland</option>             <option value="France">France</option>             <option value="Germany">Germany</option>             <option value="Greece">Greece</option>             <option value="Greenland">Greenland</option>             <option value="Hong Kong">Hong Kong</option>             <option value="India">India</option>             <option value="Indonesia">Indonesia</option>             <option value="Italy">Italy</option>             <option value="Japan">Japan</option>             <option value="Kenya">Kenya</option>             <option value="Malaysia">Malaysia</option>             <option value="Mexico">Mexico</option>             <option value="Nepal">Nepal</option>             <option value="Netherlands">Netherlands</option>             <option value="Philippines">Philippines</option>             <option value="Russia">Russia</option>             <option value="Saudi Arabia">Saudi Arabia</option>             <option value="Singapore">Singapore</option>             <option value="Turkey">Turkey</option>             <option value="United Arab Emirates">United Arab Emirates</option>             <option value="United Kingdom">United Kingdom</option>             <option value="United States">United States</option>             <option value="Zimbabwe">Zimbabwe</option></select></section>
+      <section slot="fname"><input id="fname" name="fname" type="text" placeholder="Name" /></section>
+      <section slot="lname"><input id="lname" name="lname" type="text" placeholder="Name" /></section>
+      <section slot="gender">
+        <input id="male" type="radio" name="gender" value="Male" /><span>Male</span>
+        <input id="female" type="radio" name="gender" value="Female" /><span>Female</span>
+        <input id="transgender" type="radio" name="gender" value="Transgender" /><span>Transgender</span>
+      </section>`;
+  }
+});
+</script>
+</body>
+</html>

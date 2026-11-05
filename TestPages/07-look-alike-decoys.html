@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Look-alike decoy fields</title>
+<style>
+  body { font-family: Arial, sans-serif; margin: 24px; }
+  .well { border: 1px solid #ccc; padding: 16px; margin-bottom: 24px; background: #f7f7f7; }
+  .form-group { margin-bottom: 12px; }
+  .col-xs-6 { width: 48%; display: inline-block; vertical-align: top; }
+  .col-xs-12 { width: 100%; }
+  label.control-label { display: block; font-weight: bold; }
+  .note { color: #555; font-size: 13px; }
+</style>
+</head>
+<body>
+<p class="note">Variant: Look-alike decoy fields &mdash; a newsletter form with First Name + Country dropdown + Title radios appears first; the real form also has Father&#x27;s First Name, Nickname, Shipping State and another radio group</p>
+
+<form class="well" id="newsletter">
+  <h3>Newsletter</h3>
+  <label class="control-label" for="nf">First Name</label><input id="nf" type="text" name="fname" />
+  <label class="control-label">Title</label>
+  <input type="radio" name="title" value="Mr" /><span>Mr</span>
+  <input type="radio" name="title" value="Ms" /><span>Ms</span>
+  <label class="control-label" for="nc">Country</label>
+  <select id="nc" name="country">
+            <option>-- Select --</option>
+            <option value="Afganistan">Afganistan</option>
+            <option value="Argentina">Argentina</option>
+            <option value="Australia">Australia</option>
+            <option value="Bangladesh">Bangladesh</option>
+            <option value="Belgium">Belgium</option>
+            <option value="Canada">Canada</option>
+            <option value="Cuba">Cuba</option>
+            <option value="Denmark">Denmark</option>
+            <option value="Egypt">Egypt</option>
+            <option value="Finland">Finland</option>
+            <option value="France">France</option>
+            <option value="Germany">Germany</option>
+            <option value="Greece">Greece</option>
+            <option value="Greenland">Greenland</option>
+            <option value="Hong Kong">Hong Kong</option>
+            <option value="India">India</option>
+            <option value="Indonesia">Indonesia</option>
+            <option value="Italy">Italy</option>
+            <option value="Japan">Japan</option>
+            <option value="Kenya">Kenya</option>
+            <option value="Malaysia">Malaysia</option>
+            <option value="Mexico">Mexico</option>
+            <option value="Nepal">Nepal</option>
+            <option value="Netherlands">Netherlands</option>
+            <option value="Philippines">Philippines</option>
+            <option value="Russia">Russia</option>
+            <option value="Saudi Arabia">Saudi Arabia</option>
+            <option value="Singapore">Singapore</option>
+            <option value="Turkey">Turkey</option>
+            <option value="United Arab Emirates">United Arab Emirates</option>
+            <option value="United Kingdom">United Kingdom</option>
+            <option value="United States">United States</option>
+            <option value="Zimbabwe">Zimbabwe</option>
+  </select>
+  <button type="button">Subscribe</button>
+</form>
+
+<form class="well" id="main">
+  <div class="form-group col-xs-6">
+    <label class="control-label" for="ff">Father's First Name</label>
+    <input id="ff" type="text" name="father_fname" />
+  </div>
+  <div class="form-group col-xs-6">
+    <label class="control-label" for="nn">Nickname</label>
+    <input id="nn" type="text" name="nick" placeholder="Name" />
+  </div>
+  <div class="form-group col-xs-6">
+    <label class="control-label" for="real">First Name</label>
+    <input id="real" type="text" name="first" data-expect="firstName" />
+  </div>
+  <div class="form-group col-xs-6">
+    <label class="control-label" for="ln">Last Name</label>
+    <input id="ln" type="text" name="last" />
+  </div>
+  <div class="form-group col-xs-6">
+    <label class="control-label">Marital status</label>
+    <input type="radio" name="ms" value="Single" /><span>Single</span>
+    <input type="radio" name="ms" value="Married" /><span>Married</span>
+  </div>
+  <div class="form-group col-xs-6">
+    <label class="control-label">Gender</label>
+    <input type="radio" name="sx" value="Male" /><span>Male</span>
+    <input type="radio" name="sx" value="Female" data-expect="gender" /><span>Female</span>
+  </div>
+  <div class="form-group col-xs-6">
+    <label class="control-label" for="ship">Shipping State</label>
+    <select id="ship" name="ship_state">
+            <option>-- Select --</option>
+            <option value="Alaska">Alaska</option>
+            <option value="Texas">Texas</option>
+            <option value="Ohio">Ohio</option>
+    </select>
+  </div>
+  <div class="form-group col-xs-6">
+    <label class="control-label" for="st">State</label>
+    <select id="st" name="st" data-expect="state">
+            <option>-- Select Country --</option>
+            <option value="Afganistan">Afganistan</option>
+            <option value="Argentina">Argentina</option>
+            <option value="Australia">Australia</option>
+            <option value="Bangladesh">Bangladesh</option>
+            <option value="Belgium">Belgium</option>
+            <option value="Canada">Canada</option>
+            <option value="Cuba">Cuba</option>
+            <option value="Denmark">Denmark</option>
+            <option value="Egypt">Egypt</option>
+            <option value="Finland">Finland</option>
+            <option value="France">France</option>
+            <option value="Germany">Germany</option>
+            <option value="Greece">Greece</option>
+            <option value="Greenland">Greenland</option>
+            <option value="Hong Kong">Hong Kong</option>
+            <option value="India">India</option>
+            <option value="Indonesia">Indonesia</option>
+            <option value="Italy">Italy</option>
+            <option value="Japan">Japan</option>
+            <option value="Kenya">Kenya</option>
+            <option value="Malaysia">Malaysia</option>
+            <option value="Mexico">Mexico</option>
+            <option value="Nepal">Nepal</option>
+            <option value="Netherlands">Netherlands</option>
+            <option value="Philippines">Philippines</option>
+            <option value="Russia">Russia</option>
+            <option value="Saudi Arabia">Saudi Arabia</option>
+            <option value="Singapore">Singapore</option>
+            <option value="Turkey">Turkey</option>
+            <option value="United Arab Emirates">United Arab Emirates</option>
+            <option value="United Kingdom">United Kingdom</option>
+            <option value="United States">United States</option>
+            <option value="Zimbabwe">Zimbabwe</option>
+    </select>
+  </div>
+  <button type="submit">Submit</button>
+</form>
+</body>
+</html>

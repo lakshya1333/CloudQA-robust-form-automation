@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Renamed id/name/class</title>
+<style>
+  body { font-family: Arial, sans-serif; margin: 24px; }
+  .well { border: 1px solid #ccc; padding: 16px; margin-bottom: 24px; background: #f7f7f7; }
+  .form-group { margin-bottom: 12px; }
+  .col-xs-6 { width: 48%; display: inline-block; vertical-align: top; }
+  .col-xs-12 { width: 100%; }
+  label.control-label { display: block; font-weight: bold; }
+  .note { color: #555; font-size: 13px; }
+</style>
+</head>
+<body>
+<p class="note">Variant: Renamed id/name/class &mdash; every id, name and class replaced with meaningless values; labels have no for=</p>
+
+<form class="x91" id="k2">
+  <div class="q7">
+    <label class="z1">First Name</label>
+    <input id="a8f3" name="f_001" class="c4" type="text" data-expect="firstName" />
+  </div>
+  <div class="q7">
+    <label class="z1">Last Name</label>
+    <input id="b2k9" name="f_002" class="c4" type="text" />
+  </div>
+  <div class="q7">
+    <label class="z1">Gender</label>
+    <div class="r5">
+      <input id="r_1" type="radio" name="f_003" value="opt1" /><span class="z2">Male</span>
+      <input id="r_2" type="radio" name="f_003" value="opt2" data-expect="gender" /><span class="z2">Female</span>
+      <input id="r_3" type="radio" name="f_003" value="opt3" /><span class="z2">Transgender</span>
+    </div>
+  </div>
+  <div class="q7">
+    <label class="z1">Country</label>
+    <input id="c7d1" name="f_004" class="c4" type="text" />
+  </div>
+  <div class="q7">
+    <label class="z1">State</label>
+    <select id="s0s0" name="f_005" class="c4" data-expect="state">
+            <option>-- Select Country --</option>
+            <option value="Afganistan">Afganistan</option>
+            <option value="Argentina">Argentina</option>
+            <option value="Australia">Australia</option>
+            <option value="Bangladesh">Bangladesh</option>
+            <option value="Belgium">Belgium</option>
+            <option value="Canada">Canada</option>
+            <option value="Cuba">Cuba</option>
+            <option value="Denmark">Denmark</option>
+            <option value="Egypt">Egypt</option>
+            <option value="Finland">Finland</option>
+            <option value="France">France</option>
+            <option value="Germany">Germany</option>
+            <option value="Greece">Greece</option>
+            <option value="Greenland">Greenland</option>
+            <option value="Hong Kong">Hong Kong</option>
+            <option value="India">India</option>
+            <option value="Indonesia">Indonesia</option>
+            <option value="Italy">Italy</option>
+            <option value="Japan">Japan</option>
+            <option value="Kenya">Kenya</option>
+            <option value="Malaysia">Malaysia</option>
+            <option value="Mexico">Mexico</option>
+            <option value="Nepal">Nepal</option>
+            <option value="Netherlands">Netherlands</option>
+            <option value="Philippines">Philippines</option>
+            <option value="Russia">Russia</option>
+            <option value="Saudi Arabia">Saudi Arabia</option>
+            <option value="Singapore">Singapore</option>
+            <option value="Turkey">Turkey</option>
+            <option value="United Arab Emirates">United Arab Emirates</option>
+            <option value="United Kingdom">United Kingdom</option>
+            <option value="United States">United States</option>
+            <option value="Zimbabwe">Zimbabwe</option>
+    </select>
+  </div>
+  <button type="submit">Go</button>
+</form>
+</body>
+</html>

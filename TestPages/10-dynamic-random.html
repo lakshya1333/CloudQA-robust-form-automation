@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Dynamic and randomised</title>
+<style>
+  body { font-family: Arial, sans-serif; margin: 24px; }
+  .well { border: 1px solid #ccc; padding: 16px; margin-bottom: 24px; background: #f7f7f7; }
+  .form-group { margin-bottom: 12px; }
+  .col-xs-6 { width: 48%; display: inline-block; vertical-align: top; }
+  .col-xs-12 { width: 100%; }
+  label.control-label { display: block; font-weight: bold; }
+  .note { color: #555; font-size: 13px; }
+</style>
+</head>
+<body>
+<p class="note">Variant: Dynamic and randomised &mdash; form is injected 2 seconds after load; field order, ids and names are random on every load</p>
+
+<div id="host">Loading form…</div>
+<script>
+  function rid() { return 'x' + Math.random().toString(36).slice(2, 9); }
+  var countries = ['Afganistan', 'Argentina', 'Australia', 'Bangladesh', 'Belgium', 'Canada', 'Cuba', 'Denmark', 'Egypt', 'Finland', 'France', 'Germany', 'Greece', 'Greenland', 'Hong Kong', 'India', 'Indonesia', 'Italy', 'Japan', 'Kenya', 'Malaysia', 'Mexico', 'Nepal', 'Netherlands', 'Philippines', 'Russia', 'Saudi Arabia', 'Singapore', 'Turkey', 'United Arab Emirates', 'United Kingdom', 'United States', 'Zimbabwe'];
+  setTimeout(function () {
+    var blocks = [
+      '<div class="form-group"><label class="control-label">First Name</label><input type="text" id="' + rid() + '" name="' + rid() + '" data-expect="firstName"></div>',
+      '<div class="form-group"><label class="control-label">Last Name</label><input type="text" id="' + rid() + '" name="' + rid() + '"></div>',
+      '<div class="form-group"><label class="control-label">Gender</label><div>' +
+         '<input type="radio" name="g' + rid() + '" value="Male"><span>Male</span>' +
+         '<input type="radio" name="gX" value="Female" data-expect="gender"><span>Female</span>' +
+       '</div></div>',
+      '<div class="form-group"><label class="control-label">State</label><select id="' + rid() + '" data-expect="state"><option>--</option>' +
+         countries.map(function (c) { return '<option value="' + c + '">' + c + '</option>'; }).join('') + '</select></div>',
+      '<div class="form-group"><label class="control-label">Email</label><input type="text" id="' + rid() + '"></div>'
+    ];
+    blocks.sort(function () { return Math.random() - 0.5; });
+    document.getElementById('host').innerHTML = '<form class="well">' + blocks.join('') + '<button>Submit</button></form>';
+    // keep gender radios in one group
+    var radios = document.querySelectorAll('input[type=radio]');
+    var n = rid(); radios.forEach(function (r) { r.name = n; });
+  }, 2000);
+</script>
+</body>
+</html>

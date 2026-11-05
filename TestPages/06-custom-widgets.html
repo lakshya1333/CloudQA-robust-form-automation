@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Styled widgets</title>
+<style>
+  body { font-family: Arial, sans-serif; margin: 24px; }
+  .well { border: 1px solid #ccc; padding: 16px; margin-bottom: 24px; background: #f7f7f7; }
+  .form-group { margin-bottom: 12px; }
+  .col-xs-6 { width: 48%; display: inline-block; vertical-align: top; }
+  .col-xs-12 { width: 100%; }
+  label.control-label { display: block; font-weight: bold; }
+  .note { color: #555; font-size: 13px; }
+</style>
+</head>
+<body>
+<p class="note">Variant: Styled widgets &mdash; fieldset+legend, visually hidden radio inputs behind styled labels, floating label after the input, select wrapped by its label</p>
+
+<style>
+  .pill input { position: absolute; opacity: 0; width: 1px; height: 1px; }
+  .pill label { display: inline-block; padding: 6px 14px; border: 1px solid #888; border-radius: 16px; cursor: pointer; }
+  .pill input:checked + label { background: #333; color: #fff; }
+  .float { position: relative; margin: 18px 0; }
+  .float label { position: absolute; top: -16px; left: 2px; font-size: 12px; }
+</style>
+<form id="w">
+  <div class="float">
+    <input type="text" id="u1" name="u1" placeholder=" " />
+    <label for="u1">Surname</label>
+  </div>
+  <div class="float">
+    <input type="text" id="u2" name="u2" placeholder=" " data-expect="firstName" />
+    <label for="u2">Given / First name</label>
+  </div>
+  <fieldset class="pill">
+    <legend>Gender</legend>
+    <input type="radio" id="p1" name="p" value="m" /><label for="p1">Male</label>
+    <input type="radio" id="p2" name="p" value="f" data-expect="gender" /><label for="p2">Female</label>
+    <input type="radio" id="p3" name="p" value="t" /><label for="p3">Transgender</label>
+  </fieldset>
+  <fieldset class="pill">
+    <legend>Preferred contact</legend>
+    <input type="radio" id="c1" name="c" value="e" /><label for="c1">Email</label>
+    <input type="radio" id="c2" name="c" value="p" /><label for="c2">Phone</label>
+  </fieldset>
+  <p><label>State / Province
+    <select name="sp" data-expect="state">
+            <option>Choose...</option>
+            <option value="Afganistan">Afganistan</option>
+            <option value="Argentina">Argentina</option>
+            <option value="Australia">Australia</option>
+            <option value="Bangladesh">Bangladesh</option>
+            <option value="Belgium">Belgium</option>
+            <option value="Canada">Canada</option>
+            <option value="Cuba">Cuba</option>
+            <option value="Denmark">Denmark</option>
+            <option value="Egypt">Egypt</option>
+            <option value="Finland">Finland</option>
+            <option value="France">France</option>
+            <option value="Germany">Germany</option>
+            <option value="Greece">Greece</option>
+            <option value="Greenland">Greenland</option>
+            <option value="Hong Kong">Hong Kong</option>
+            <option value="India">India</option>
+            <option value="Indonesia">Indonesia</option>
+            <option value="Italy">Italy</option>
+            <option value="Japan">Japan</option>
+            <option value="Kenya">Kenya</option>
+            <option value="Malaysia">Malaysia</option>
+            <option value="Mexico">Mexico</option>
+            <option value="Nepal">Nepal</option>
+            <option value="Netherlands">Netherlands</option>
+            <option value="Philippines">Philippines</option>
+            <option value="Russia">Russia</option>
+            <option value="Saudi Arabia">Saudi Arabia</option>
+            <option value="Singapore">Singapore</option>
+            <option value="Turkey">Turkey</option>
+            <option value="United Arab Emirates">United Arab Emirates</option>
+            <option value="United Kingdom">United Kingdom</option>
+            <option value="United States">United States</option>
+            <option value="Zimbabwe">Zimbabwe</option>
+    </select></label></p>
+  <button type="submit">Save</button>
+</form>
+</body>
+</html>

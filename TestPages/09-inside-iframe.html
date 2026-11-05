@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Form inside an iframe</title>
+<style>
+  body { font-family: Arial, sans-serif; margin: 24px; }
+  .well { border: 1px solid #ccc; padding: 16px; margin-bottom: 24px; background: #f7f7f7; }
+  .form-group { margin-bottom: 12px; }
+  .col-xs-6 { width: 48%; display: inline-block; vertical-align: top; }
+  .col-xs-12 { width: 100%; }
+  label.control-label { display: block; font-weight: bold; }
+  .note { color: #555; font-size: 13px; }
+</style>
+</head>
+<body>
+<p class="note">Variant: Form inside an iframe &mdash; the whole form moved into an iframe; the top page only has an unrelated search box</p>
+
+<div><input type="text" placeholder="Search name" aria-label="Search" /></div>
+<iframe id="frm" style="width:600px;height:300px" srcdoc="<html><body>
+<form id='inner'>
+  <label for='i1'>First Name</label> <input id='i1' type='text' data-expect='firstName' /><br>
+  <label>Gender</label>
+  <input type='radio' name='gg' value='Male' /><span>Male</span>
+  <input type='radio' name='gg' value='Female' data-expect='gender' /><span>Female</span><br>
+  <label for='i2'>State</label>
+  <select id='i2' data-expect='state'><option value='-- Select --'>-- Select --</option><option value='Afganistan'>Afganistan</option><option value='Argentina'>Argentina</option><option value='Australia'>Australia</option><option value='Bangladesh'>Bangladesh</option><option value='Belgium'>Belgium</option><option value='Canada'>Canada</option><option value='Cuba'>Cuba</option><option value='Denmark'>Denmark</option><option value='Egypt'>Egypt</option><option value='Finland'>Finland</option><option value='France'>France</option><option value='Germany'>Germany</option><option value='Greece'>Greece</option><option value='Greenland'>Greenland</option><option value='Hong Kong'>Hong Kong</option><option value='India'>India</option><option value='Indonesia'>Indonesia</option><option value='Italy'>Italy</option><option value='Japan'>Japan</option><option value='Kenya'>Kenya</option><option value='Malaysia'>Malaysia</option><option value='Mexico'>Mexico</option><option value='Nepal'>Nepal</option><option value='Netherlands'>Netherlands</option><option value='Philippines'>Philippines</option><option value='Russia'>Russia</option><option value='Saudi Arabia'>Saudi Arabia</option><option value='Singapore'>Singapore</option><option value='Turkey'>Turkey</option><option value='United Arab Emirates'>United Arab Emirates</option><option value='United Kingdom'>United Kingdom</option><option value='United States'>United States</option><option value='Zimbabwe'>Zimbabwe</option></select>
+</form></body></html>"></iframe>
+</body>
+</html>

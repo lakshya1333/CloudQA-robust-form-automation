@@ -1,0 +1,9 @@
+bin/
+obj/
+Reports/
+.vs/
+*.user
+build-and-test-log.txt
+push-log.txt
+push-to-github.bat
+commit-message.txt

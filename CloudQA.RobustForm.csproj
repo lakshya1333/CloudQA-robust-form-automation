@@ -1,0 +1,26 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <OutputType>Exe</OutputType>
+    <TargetFramework>net8.0</TargetFramework>
+    <Nullable>enable</Nullable>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <LangVersion>latest</LangVersion>
+    <RootNamespace>CloudQA.RobustForm</RootNamespace>
+    <AssemblyName>CloudQA.RobustForm</AssemblyName>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <!-- Selenium 4.x ships Selenium Manager, which downloads the matching browser driver automatically -->
+    <PackageReference Include="Selenium.WebDriver" Version="4.27.0" />
+    <PackageReference Include="Selenium.Support" Version="4.27.0" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <!-- The semantic locator runs inside the page; it is compiled into the exe -->
+    <EmbeddedResource Include="Locator\SmartLocator.js" LogicalName="SmartLocator.js" />
+    <None Update="appsettings.json" CopyToOutputDirectory="PreserveNewest" />
+    <None Update="TestPages\**\*" CopyToOutputDirectory="PreserveNewest" />
+  </ItemGroup>
+
+</Project>
