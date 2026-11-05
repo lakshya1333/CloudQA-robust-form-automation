@@ -8,6 +8,8 @@ No field is found with a fixed XPath or CSS selector. Fields are found by **what
 their label, nearby text, position on screen and options. See **[APPROACH.md](APPROACH.md)** for the
 approach and its limitations.
 
+Author: Lakshya Jain ([@lakshya1333](https://github.com/lakshya1333))
+
 ![Live page after the run](docs/live-page-result.png)
 
 ## Setup
